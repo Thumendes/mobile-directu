@@ -4,7 +4,7 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 import api from "../../services/api";
 import styles from "./styles";
 
-const Form = ({ data, navigation }) => {
+const Form = ({ data, openForm }) => {
   const [store, setStore] = useState({});
 
   const currencyFormat = (num) => {
@@ -19,19 +19,9 @@ const Form = ({ data, navigation }) => {
     })();
   }, []);
 
-  const handleOpenForm = () => {
-    Alert.alert("Abrir Formulário", data.name, [
-      {
-        text: "Abrir",
-        onPress: () => navigation.navigate("form", { id: data._id }),
-      },
-    ]);
-  };
-
   return (
-    <TouchableHighlight style={styles.container} onPress={handleOpenForm}>
+    <TouchableHighlight style={styles.container} onPress={openForm}>
       <>
-        <Image source={store.imageURL} />
         <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
           <Text style={styles.title}>{data.name}</Text>
           <Text style={styles.title}>{store.name}</Text>

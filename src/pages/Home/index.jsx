@@ -6,7 +6,7 @@ import { FlatList } from "react-native";
 import Form from "../../components/Form";
 import styles from "./styles";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [forms, setForms] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,13 @@ const Home = () => {
         <FlatList
           style={styles.list}
           data={forms}
-          renderItem={({ item }) => <Form data={item} />}
+          keyExtractor={(item, index) => index}
+          renderItem={({ item }) => (
+            <Form
+              data={item}
+              openForm={() => navigation.navigate("form", { id: item._id })}
+            />
+          )}
         />
       </View>
     </Layout>

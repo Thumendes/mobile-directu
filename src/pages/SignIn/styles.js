@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 25,
-    marginTop: 100,
+    marginTop: 50,
   },
   title: {
     color: "#fff",
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   form: {
     flexDirection: "column",
-    marginTop: 50,
+    marginTop: 20,
   },
   link: {
     textAlign: "center",
