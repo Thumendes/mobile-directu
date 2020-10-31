@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "700",
     textAlign: "center",
+    fontFamily: "Poppins_400Regular",
   },
   button: {
     marginTop: 10,

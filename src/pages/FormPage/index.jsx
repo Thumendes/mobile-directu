@@ -19,19 +19,20 @@ const FormPage = ({ route, navigation }) => {
   }, []);
 
   const handleSubmit = async () => {
-    Alert.alert(
-      "Obrigado por responder!",
-      `Acaba de ganhar R$${form.discount} de Benefícios!`
-    );
-
     try {
       const { data } = await api.post("answer", {
         clientId: await SecureStore.getItemAsync("token"),
         formId: form._id,
-        questions: answers.map((answers) => ({
-          value: answers,
+        questions: answers.map((answer, index) => ({
+          name: form.questions[index].name,
+          value: answer,
         })),
       });
+      Alert.alert(
+        "Obrigado por responder!",
+        `Acaba de ganhar R$${form.discount} de Benefícios!`
+      );
+      navigation.navigate("home");
     } catch (error) {}
   };
 
