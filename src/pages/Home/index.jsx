@@ -15,9 +15,7 @@ const Home = ({ navigation }) => {
     (async () => {
       const id = await SecureStore.getItemAsync("token");
       const { data: formsData } = await api.get(`form?clientId=${id}`);
-      const { data: clientData } = await api.get(`client/${id}`);
       setForms(formsData);
-      setClient(clientData);
     })();
   }, []);
 
@@ -28,13 +26,6 @@ const Home = ({ navigation }) => {
       </View>
 
       <View style={styles.container}>
-        <Text style={styles.subTitle}>Benefícios Acumulados</Text>
-        <View style={styles.discounts}>
-          <Text style={styles.number}>
-            R$
-            {JSON.stringify(client.client.wallet, null, 2)}.00
-          </Text>
-        </View>
         <Text style={styles.subTitle}>Formulários</Text>
         <FlatList
           style={styles.list}

@@ -51,6 +51,7 @@ const FormPage = ({ route, navigation }) => {
       <View style={styles.container}>
         <FlatList
           data={form.questions}
+          keyExtractor={(item, index) => index}
           renderItem={({ item, index }) => (
             <Question
               data={item}
